@@ -19,9 +19,9 @@ You point it at a code change - a local `git diff`, a GitHub PR URL, or a saved 
 
 ## How It Was Built
 
-**Model:** `nvidia/nemotron-3.5-super-vl-120b-a12b` via [NVIDIA NIM](https://build.nvidia.com) - free API, no credit card required.
+**Model:** `nvidia/nemotron-3.5-super-vl-120b-a12b` via [NVIDIA NIM](https://build.nvidia.com).
 
-**Framework:** No agent framework (LangChain, etc.) was used intentionally - the task is a single-turn review, so a direct API call is simpler and easier to explain.
+**Framework:** The task is a single-turn review, so a direct API call.
 
 **How it calls tools:**
 1. `tools.py` fetches the diff - either via `subprocess` running `git diff HEAD`, or via the GitHub REST API (`application/vnd.github.v3.diff` accept header).
@@ -65,7 +65,7 @@ requirements.txt
 
 ```bash
 # 1. Clone and enter the project
-git clone <repo_url> && cd codeAgent
+git clone https://github.com/MohapatraShibu/codeAgent && cd codeAgent
 
 # 2. Create and activate the virtual environment
 python -m venv venv
@@ -77,7 +77,7 @@ pip install -r requirements.txt
 
 # 4. Fill in your API key in .env
 # Get a free key at https://build.nvidia.com
-API_KEY=nvapi-your_actual_key_here
+API_KEY=nvapi-your_key_here
 API_BASE=https://integrate.api.nvidia.com/v1
 MODEL=nvidia/nemotron-3.5-super-vl-120b-a12b
 
@@ -96,4 +96,4 @@ python main.py
 ## Requirements
 
 - Python 3.9+
-- Free [NVIDIA NIM API key](https://build.nvidia.com)
+- [NVIDIA NIM API key](https://build.nvidia.com)
