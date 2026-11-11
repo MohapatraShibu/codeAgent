@@ -1,0 +1,23 @@
+diff --git a/app/auth.py b/app/auth.py
+index 83b2f1a..c9d4e72 100644
+--- a/app/auth.py
++++ b/app/auth.py
+@@ -1,10 +1,20 @@
++import sqlite3
++
+ def login(username, password):
+-    if username == "admin" and password == "secret":
+-        return True
+-    return False
++    conn = sqlite3.connect("users.db")
++    cursor = conn.cursor()
++    query = f"SELECT * FROM users WHERE username='{username}' AND password='{password}'"
++    cursor.execute(query)
++    user = cursor.fetchone()
++    return user is not None
++
++def reset_password(user_id, new_password):
++    conn = sqlite3.connect("users.db")
++    cursor = conn.cursor()
++    cursor.execute(f"UPDATE users SET password='{new_password}' WHERE id={user_id}")
++    conn.commit()
