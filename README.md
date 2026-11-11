@@ -2,6 +2,8 @@
 
 A lightweight AI agent that reviews a git diff or GitHub pull request and returns structured feedback on bugs, risks, missing tests, and style issues.
 
+A screen recording demonstrating the agent in action is included in this repository.
+
 ---
 
 ## What It Does
